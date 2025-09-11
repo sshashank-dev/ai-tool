@@ -1,108 +1,4 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
 
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>  </div>
-//     </>
-//   )
-// }
-
-// export default App
-
-
-// import React from "react";
-
-// export default function App() {
-//   return (
-//     <div className="bg-zinc-950 text-white min-h-screen">
-//       {/* Hero Section */}
-//       <header className="max-w-6xl mx-auto px-6 py-16 text-center">
-//         <h1 className="text-5xl md:text-7xl font-bold mb-4">
-//           Welcome to <span className="text-yellow-400">BrightFuture Academy</span>
-//         </h1>
-//         <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
-//           Empowering students with quality education and skills for a brighter tomorrow.
-//           Learn, grow, and achieve your dreams with us.
-//         </p>
-//         <div className="flex justify-center gap-4">
-//           <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold transition">
-//             Enroll Now
-//           </button>
-//           <button className="border border-gray-500 hover:border-yellow-400 hover:text-yellow-400 px-6 py-3 rounded-lg font-semibold transition">
-//             Learn More
-//           </button>
-//         </div>
-//       </header>
-
-//       {/* Courses Section */}
-//       <section className="max-w-6xl mx-auto px-6 py-12">
-//         <h2 className="text-3xl font-bold text-center mb-10 text-yellow-400">
-//           Our Popular Courses
-//         </h2>
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-//           {[
-//             {
-//               title: "Mathematics Excellence",
-//               desc: "Master numbers, equations, and problem-solving with expert guidance."
-//             },
-//             {
-//               title: "Science Innovations",
-//               desc: "Explore physics, chemistry, and biology through practical learning."
-//             },
-//             {
-//               title: "Language & Literature",
-//               desc: "Improve your communication, grammar, and writing skills."
-//             }
-//           ].map((course, i) => (
-//             <div
-//               key={i}
-//               className="bg-zinc-900 p-6 rounded-xl shadow-lg hover:shadow-yellow-400/30 transition"
-//             >
-//               <h3 className="text-xl font-bold mb-3 text-yellow-300">{course.title}</h3>
-//               <p className="text-gray-400">{course.desc}</p>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* About Section */}
-//       <section className="bg-zinc-900 py-12 px-6">
-//         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-//           <img
-//             src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238"
-//             alt="School Campus"
-//             className="rounded-xl shadow-lg"
-//           />
-//           <div>
-//             <h2 className="text-3xl font-bold mb-4 text-yellow-400">
-//               Why Choose BrightFuture Academy?
-//             </h2>
-//             <p className="text-gray-400 mb-4">
-//               We believe education should be engaging, practical, and inspiring. Our teachers focus on
-//               both academic excellence and personal growth, helping students succeed in all aspects of life.
-//             </p>
-//             <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold transition">
-//               Learn More
-//             </button>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Footer */}
-//       <footer className="bg-zinc-900 py-6 mt-12">
-//         <div className="max-w-6xl mx-auto text-center text-gray-500">
-//           © {new Date().getFullYear()} BrightFuture Academy. All rights reserved.
-//         </div>
-//       </footer>
-//     </div>
-//   );
-// }
 
 import React, { useEffect, useRef, useState } from 'react'
 import './App.css'
@@ -113,14 +9,13 @@ import QuestionAns from './components/QuestionAns';
 
 
 
+
 export default function App() {
 
   const [question, setQuestion] = useState('')
   const [result, setResult] = useState([]);
   const [recentHistory, setRecentHistory] = useState(JSON.parse(localStorage.getItem('history')) || []);
-  //   const [recentHistory, setRecentHistory] = useState(
-  //   JSON.parse(localStorage.getItem('history')) || []
-  // );
+
   const [selectedHistory, setSelectedHistory] = useState('')
   const scrollToAns = useRef();
   const [loader, setLoader] = useState(false);
@@ -139,6 +34,10 @@ export default function App() {
       if (localStorage.getItem('history')) {
         let history = JSON.parse(localStorage.getItem('history'));
         history = [question, ...history]
+        history = history.slice(0, 19);
+        history = history.map((item) =>
+          item.charAt(0).toUpperCase() + item.slice(1).trim());
+        history = [...new Set(history)]
         localStorage.setItem('history', JSON.stringify(history))
         setRecentHistory(history)
       } else {
@@ -172,12 +71,6 @@ export default function App() {
 
 
 
-    // try {
-    //   let response = await fetch(URL,);
-    //   console.log("Request sent");
-    // } catch (err) {
-    //   console.error("Fetch failed:", err);
-    // }
 
     setLoader(true);
 
@@ -198,22 +91,7 @@ export default function App() {
 
 
 
-    // dataString = dataString.split("* ");
-    // dataString = dataString.map((item) => item.trim());
 
-
-    // console.log(dataString);
-    // setResult([question, ...dataString]);
-
-    // setResult([question, dataString]);
-    // setResult(prev => [...prev, question, ...dataString]);
-
-
-    // setResult(prev => [
-    //   ...prev,
-    //   { type: "question", text: question ? question : selectedHistory },
-    //   ...dataString.map(ans => ({ type: "answer", text: ans }))
-    // ]);
     setResult(prev => [
       ...prev,
       { type: "question", text: question ? question : selectedHistory },
@@ -256,28 +134,12 @@ export default function App() {
   }, [selectedHistory])
 
 
-  // const [darkMode, setDarkMode] = useState('dark');
-  // useEffect(() => {
-  //   console.log(darkMode);
-  //   if (darkMode == 'dark') {
-  //     document.documentElement.classList.add('dark')
-  //   } else {
-  //     document.documentElement.classList.remove('dark')
-
-  //   }
-  // }, [darkMode])
-
   return (
 
     <div>
       <div className='grid grid-cols-5 h-screen text-center'>
 
-        {/* <select onChange={(event) => setDarkMode(event.target.value)} className='fixed text-white bottom-0 p-5' > */}
 
-
-        {/* <option value="dark"> Dark</option>
-          <option value="light"> Light </option>
-        </select> */}
 
 
         <ReacentSearches recentHistory={recentHistory} setRecentHistory={setRecentHistory} setSelectedHistory={setSelectedHistory} setQuestion={setQuestion} />

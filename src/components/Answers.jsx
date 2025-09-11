@@ -10,7 +10,6 @@ const Answers = ({ Ans, totalResult, index }) => {
 
     const [heading, setHeading] = useState(false)
     const [answer, setAnswer] = useState(Ans)
-    // console.log(index);
 
 
     useEffect(() => {
@@ -59,11 +58,6 @@ const Answers = ({ Ans, totalResult, index }) => {
                         <ReactMarkdown components={render}>  {answer}</ReactMarkdown>
                     </span > : <span className="pl-5 "> {answer}</span>
             }
-
-
-
-
-            {/* {Ans} */}
 
         </>
     )
