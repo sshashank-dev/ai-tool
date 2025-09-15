@@ -18,3 +18,31 @@
   scrollbar-width: thin;
   scrollbar-color: #3f3f46 #18181b;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+
+
+.answers-container {
+  max-height: 60vh;
+  /* adjust height as needed */
+  overflow-y: auto;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+}
+
+.answers-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Edge */
+}

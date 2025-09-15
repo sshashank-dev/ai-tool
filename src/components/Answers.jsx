@@ -3,6 +3,7 @@ import { replaceHeadingStars } from "../helper";
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import RectMarkdown from 'react-markdown'
 import ReactMarkdown from "react-markdown";
+import "highlight.js/styles/github-dark.css";
 
 const Answers = ({ Ans, totalResult, index }) => {
 
@@ -10,6 +11,11 @@ const Answers = ({ Ans, totalResult, index }) => {
 
     const [heading, setHeading] = useState(false)
     const [answer, setAnswer] = useState(Ans)
+
+
+
+
+
 
 
     useEffect(() => {
@@ -48,20 +54,31 @@ const Answers = ({ Ans, totalResult, index }) => {
                 </code>
             )
         }
-    }
+    };
+
+
+
+
+
+
+
+
 
     return (
         <>
-            {
-                index == 0 ? <span className="pt-2 text-xl block text-white"> {answer} </span> :
-                    heading ? <span className="pt-2 text-xl block text-white">
-                        <ReactMarkdown components={render}>  {answer}</ReactMarkdown>
-                    </span > : <span className="pl-5 "> {answer}</span>
-            }
-
+            <div className="answers-container p-2 max-w-[75%]">
+                {
+                    index == 0 ? <span className="pt-2 text-xl block text-white max-w-[75%]"> {answer} </span> :
+                        heading ? <span className="pt-2 text-xl block text-white">
+                            <ReactMarkdown components={render}>  {answer}</ReactMarkdown>
+                        </span > : <span className="pl-5 "> {answer}</span>
+                }
+            </div>
         </>
     )
 }
 
 
 export default Answers;
+
+

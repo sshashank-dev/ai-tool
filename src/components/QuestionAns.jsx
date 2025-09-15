@@ -38,3 +38,25 @@ export default QuestionAns;
 
 
 
+
+// import React from 'react';
+// import ReactMarkdown from 'react-markdown';
+// import { FaUser, FaRobot } from 'react-icons/fa';
+
+// export default function QuestionAns({ item }) {
+//     const isQuestion = item.type === 'question';
+
+//     return (
+//         <li className={`flex items-start gap-4 p-4 my-3 rounded-lg ${isQuestion ? 'bg-zinc-800' : ''}`}>
+//             {/* Icon */}
+//             <div className={`flex-shrink-0 p-2 rounded-full text-white ${isQuestion ? 'bg-blue-600' : 'bg-purple-600'}`}>
+//                 {isQuestion ? <FaUser /> : <FaRobot />}
+//             </div>
+//             {/* Text Content */}
+//             <div className="flex-1 overflow-x-auto text-zinc-200">
+//                 <ReactMarkdown>{item.text}</ReactMarkdown>
+//             </div>
+//         </li>
+//     );
+// }
+

@@ -34,6 +34,14 @@ function ReacentSearches({ recentHistory, setRecentHistory, setSelectedHistory, 
                                 <li onClick={() => { setSelectedHistory(item); setQuestion(item) }} className=' w-full p-1 pl-5 truncate text-zinc-400 cursor-pointer hover:bg-zinc-700 hover:text-zinc-200 ' key={index}>
                                     {item}
                                 </li>
+                                {/* <li
+                                    onClick={() => setSelectedHistory(item)}
+                                    className="cursor-pointer p-2 rounded-lg hover:bg-zinc-700  text-zinc-400
+             transition-transform transform-gpu origin-center 
+             duration-300 hover:scale-105 inline-block w-full"
+                                >
+                                    {item}
+                                </li> */}
 
 
                                 <button onClick={() => clearSelectedHistory(item)} className='cursor-pointer'> <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e3e3e3"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z" /></svg> </button>
