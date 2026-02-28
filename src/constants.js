@@ -1,3 +1,3 @@
-export const URL = "AIzaSyBjZO4OKmYs7QCp6pJc8qcqwkRkJ2y6DKk"
+export const URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_NEW_KEY"
 
 
