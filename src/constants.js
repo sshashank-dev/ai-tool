@@ -1,4 +1,5 @@
 
 
-export const URL =
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyYourRealKey"; 
+export const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
+
+export const OPENROUTER_MODEL = "mistralai/mistral-7b-instruct";
