@@ -1,48 +1,137 @@
-.container::-webkit-scrollbar {
-  width: 8px;
+/* 1. LOCK VIEWPORT */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
 }
 
-.container::-webkit-scrollbar-track {
-  background: #18181b;
-
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }
 
-.container::-webkit-scrollbar-thumb {
-  background-color: #3f3f46;
-
-  border-radius: 4px;
+/* 2. THE IMAGE: This forces it to be full and stay behind everything */
+.bg-image-full {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
 }
 
-
-.container {
-  scrollbar-width: thin;
-  scrollbar-color: #3f3f46 #18181b;
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
-::-webkit-scrollbar {
-  display: none;
+/* 3. THE UI LAYER */
+.ui-layer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
 }
 
-* {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 40px 40px 40px;
+  overflow: hidden;
 }
 
-
-
+/* 4. CHAT BOX: Transparent so the image shows through */
 .answers-container {
-  max-height: 60vh;
-  /* adjust height as needed */
+  flex: 1;
   overflow-y: auto;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  padding: 30px;
   scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE 10+ */
 }
 
 .answers-container::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari, Edge */
+}
+
+/* 5. INPUT FIX */
+.input-wrapper {
+  margin-top: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+}
+
+/* UI ELEMENTS */
+.nav-notch {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 16px 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  backdrop-filter: blur(20px);
+}
+
+.logo-text {
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(to right, #22d3ee, #9333ea);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.chat-input {
+  flex: 1;
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.execute-btn {
+  background: linear-gradient(to bottom right, #06b6d4, #7e22ce);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
