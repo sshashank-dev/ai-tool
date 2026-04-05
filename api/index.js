@@ -122,7 +122,7 @@ app.use(express.json());
 
 // CONFIGURATION - Matches your Vercel Environment Variable name
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
-const OPENROUTER_KEY = process.env.VITE_GEMINI_KEY;
+const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_MODEL = "openai/gpt-3.5-turbo";
 
 app.post("/api/ask", async (req, res) => {
